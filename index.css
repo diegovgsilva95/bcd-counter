@@ -1,0 +1,66 @@
+body {
+    background: #000;
+}
+.boxes {
+    display: inline-flex;
+    gap: 5px;
+    padding: 5px;
+    background: #151515;
+}
+.segments {
+    background: #111;
+    --b: 3px;
+    --w: calc(var(--b) * 5.8);
+    --hb: calc(var(--b) / 2);
+    --s: calc(var(--w) - calc(var(--b) * 2));
+    --rb: calc(var(--s) - var(--hb));
+    --h: calc(calc(2 * var(--s)) + calc(3 * var(--b)));
+    height: var(--h);
+    width: var(--w);
+    display: inline-block;
+    position: relative;
+}
+.segment {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#030 0.25turn, #020 0.25turn 0.5turn, #030 0.5turn 0.75turn, #020 0.75turn) top left / 2px 2px repeat;
+}
+.segment-a, .segment-g, .segment-d {
+    width: var(--s);
+    height: var(--b);
+    left: var(--b);
+    clip-path: polygon(0px var(--hb), var(--hb) 0px, var(--rb) 0px, var(--s) var(--hb), var(--rb) var(--b), var(--hb) var(--b));
+}
+.segment-b, .segment-c, .segment-e, .segment-f {
+    width: var(--b);
+    height: var(--s);
+    clip-path: polygon(var(--hb) 0px, var(--b) var(--hb), var(--b) var(--rb), var(--hb) var(--s), 0px var(--rb), 0px var(--hb));
+} 
+.segment-b, .segment-c {
+    left: calc(var(--w) - var(--b));
+}
+.segment-f, .segment-e {
+    left: 0px;
+}
+.segment-a {
+    top: 0px;
+}
+.segment-b, .segment-f {
+    top: var(--b);
+}
+.segment-c, .segment-e {
+    top: calc(2 * var(--b) + var(--s));
+}
+.segment-g {
+    top: calc(calc(1 * var(--b)) + calc(1 * var(--s)));
+}
+.segment-d {
+    top: calc(calc(2 * var(--b)) + calc(2 * var(--s)));
+}
+.segment.on {
+    background: conic-gradient(#0F0 0.25turn, #020 0.25turn 0.5turn, #0F0 0.5turn 0.75turn, #020 0.75turn) top left / 2px 2px repeat;
+
+    /* background: red; */
+}
